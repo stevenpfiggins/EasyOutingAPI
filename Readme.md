@@ -1,8 +1,6 @@
 # SIS-WebApi
 
 ## Architecture
-Created by Jared Wooten - pancakeparfait
-
 This project uses N-Tier architecture to encapsulate structural concerns of the application into assemblies per concern.
 Projects with the ".DataContract" suffix contain only DataContracts and Interfaces. The corresponding similarly named project implements the contract project.
 
