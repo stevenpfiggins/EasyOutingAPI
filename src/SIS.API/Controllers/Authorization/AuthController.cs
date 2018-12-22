@@ -47,14 +47,21 @@ namespace RedStarter.API.Controllers.Authorization
 
             var returnedUser = await _authManager.RegisterUser(userDTO);
 
-            var userResponse = _mapper.Map<ReceivedExistingUserResponse>(returnedUser);
+            var appUser = await _userManager.Users
+              .FirstOrDefaultAsync(u => u.NormalizedUserName == userDTO.UserName.ToUpper());
 
-            if (userResponse != null)  //THis isn't the way...
+            var userResponse = _mapper.Map<ReceivedExistingUserResponse>(appUser);
+
+            if (userResponse != null)
             {
-                return Ok();
+                return Ok(new
+                {
+                    token = GenerateTokenString(appUser).Result,
+                    user = userResponse
+                });
             }
 
-            return BadRequest("stuff");
+            return BadRequest("Bad Request");
         }
 
         [HttpPost("login")]
