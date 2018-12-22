@@ -1,4 +1,4 @@
-# SIS-WebApi
+# DotNetCore-WebApi-Starter
 
 ## Architecture
 This project uses N-Tier architecture to encapsulate structural concerns of the application into assemblies per concern.
