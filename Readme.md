@@ -35,7 +35,7 @@ Depends only on a connection to the SIS database and Entity Framework.
     1) Contains Resource Access objects suffixed with "RAO" (Resource Access Objects)
     2) Contains Interfaces for Repositories.
 2) Project.Database
-    1) This layer should be kept highly encapsulated and has no knowledge of Business data contracts or logic. DTOs are passed in through Invoker methods(or other pattern as needed), but no contracts are known.
+    1) This layer should be kept highly encapsulated and has no knowledge of Business data contracts or logic. RAOs are passed in through Repository method calls(or other pattern as needed), but no contracts are known.
     2) This layer should map RAOs to entities. 
     3) This layer will contain entities that are mapped to the DB and are suffixed by with the word "Entity". For instance, UserEntity.
     4) This layer will contain Repositories for CRUD + List operations. For instance, NoteRepository would have a method called Create that would convert RAOs to Entities. Then, Add them to the DbContext and call SaveChanges().
