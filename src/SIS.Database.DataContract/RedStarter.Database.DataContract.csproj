@@ -13,7 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Outing\Interfaces\" />
     <Folder Include="User\" />
   </ItemGroup>
 

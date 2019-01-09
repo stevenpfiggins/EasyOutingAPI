@@ -25,8 +25,4 @@
     <ProjectReference Include="..\SIS.API.DataContract\RedStarter.API.DataContract.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Outing\Interfaces\" />
-  </ItemGroup>
-
 </Project>

@@ -6,7 +6,7 @@ namespace RedStarter.Business.DataContract.Outing.DTOs
 {
     public enum OutingType
     {
-        Canoeing = 1, Kyaking, Hiking, RockClimbing, Camping, Fishing, SightSeeing,
+        Canoeing = 1, Kayaking, Hiking, RockClimbing, Camping, Fishing, SightSeeing,
         Football, Basketball, Soccer, Baseball, Hockey, Tennis, Golf, Running, WeightLifting, Yoga,
         Gymnastics, Restaurants, Bars, Wineries, Consoles, BoardGames, CardGames, Arcades, Movies, Theatre,
         Concerts, Festivals, Clubs, Bowling, Zoo, Painting, Knitting, Pottery, Museums, Aquariums, Galleries
@@ -20,5 +20,6 @@ namespace RedStarter.Business.DataContract.Outing.DTOs
         public OutingType OutingType { get; set; }
         public string CreatedBy { get; set; }
         public DateTimeOffset CreatedOn { get; set; }
+        public int OwnerId { get; set; }
     }
 }
