@@ -181,31 +181,15 @@ namespace RedStarter.Database.Migrations
 
             modelBuilder.Entity("RedStarter.Database.Entities.Interests.InterestsEntity", b =>
                 {
-                    b.Property<int>("OwnerId")
+                    b.Property<int>("TransactionId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Craft");
+                    b.Property<int>("Interests");
 
-                    b.Property<int>("Culture");
+                    b.Property<int>("OwnerId");
 
-                    b.Property<int>("Fitness");
-
-                    b.Property<int>("FoodAndDrink");
-
-                    b.Property<int>("Gaming");
-
-                    b.Property<int>("GetOutdoorsAndAdventure");
-
-                    b.Property<int>("Media");
-
-                    b.Property<int>("Services");
-
-                    b.Property<int>("Social");
-
-                    b.Property<int>("Sports");
-
-                    b.HasKey("OwnerId");
+                    b.HasKey("TransactionId");
 
                     b.ToTable("InterestsTableAccess");
                 });

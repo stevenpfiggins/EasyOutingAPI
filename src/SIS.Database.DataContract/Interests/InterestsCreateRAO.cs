@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RedStarter.Database.DataContract.Interests
 {
-    public enum Interests
+    public enum InterestEnum
     {
         Canoeing = 1, Kyaking, Hiking, RockClimbing, Camping, Fishing, SightSeeing,
         Football, Basketball, Soccer, Baseball, Hockey, Tennis, Golf, Running, WeightLifting, Yoga,
@@ -14,6 +14,7 @@ namespace RedStarter.Database.DataContract.Interests
 
     public class InterestsCreateRAO
     {
-        public Interests Interests { get; set; }
+        public List<InterestEnum> Interests { get; set; }
+        public int UserId { get; set; }
     }
 }

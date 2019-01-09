@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace RedStarter.Business.DataContract.Interests
 {
-
-    public class InterestsCreateDTO
+    public interface IinterestsManager
     {
-        public List<int> Interests { get; set; }
-        public int UserId { get; set; }
+        Task<bool> CreateInterests(InterestsCreateDTO dto);
     }
 }
