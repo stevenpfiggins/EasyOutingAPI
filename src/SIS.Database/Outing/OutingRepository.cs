@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using RedStarter.Database.Contexts;
 using RedStarter.Database.DataContract.Outing.Interfaces;
 using RedStarter.Database.DataContract.Outing.RAOs;
@@ -25,11 +26,33 @@ namespace RedStarter.Database.Outing
         {
             var entity = _mapper.Map<OutingEntity>(rao);
 
-            _context.OutingTableAccess.AddAsync(entity);
+            await _context.OutingTableAccess.AddAsync(entity);
 
             return await _context.SaveChangesAsync() == 1;
+        }
 
-            throw new NotImplementedException();
+        public async Task<bool> DeleteOuting(int id)
+        {
+            var query = await _context.OutingTableAccess.SingleAsync(q => q.OutingEntityId == id);
+            _context.OutingTableAccess.Remove(query);
+
+            return await _context.SaveChangesAsync() == 1;
+        }
+
+        public async Task<IEnumerable<OutingGetListItemRAO>> GetOutings()
+        {
+            var query = await _context.OutingTableAccess.ToArrayAsync();
+            var rao = _mapper.Map<IEnumerable<OutingGetListItemRAO>>(query);
+
+            return rao;
+        }
+
+        public async Task<OutingGetListItemRAO> GetOutingById(int id)
+        {
+            var query = await _context.OutingTableAccess.SingleAsync(q => q.OutingEntityId == id);
+            var rao = _mapper.Map<OutingGetListItemRAO>(query);
+
+            return rao;
         }
     }
 }

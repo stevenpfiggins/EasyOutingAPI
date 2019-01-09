@@ -15,11 +15,6 @@ namespace RedStarter.Business.Managers.Outing
         private readonly IMapper _mapper;
         private readonly IOutingRepository _repository;
 
-        public Task<bool> ChangeIntToEnum(int outingType)
-        {
-            throw new NotImplementedException();
-        }
-
         public OutingManager(IMapper mapper, IOutingRepository repository)
         {
             _mapper = mapper;
@@ -34,6 +29,29 @@ namespace RedStarter.Business.Managers.Outing
                 return true;
 
             throw new NotImplementedException();
+        }
+
+        public async Task<bool> DeleteOuting(int id)
+        {
+            if (await _repository.DeleteOuting(id))
+                return true;
+            throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<OutingGetListItemDTO>> GetOutings()
+        {
+            var rao = await _repository.GetOutings();
+            var dto = _mapper.Map<IEnumerable<OutingGetListItemDTO>>(rao);
+
+            return dto;
+        }
+
+        public async Task<OutingGetListItemDTO> GetOutingById(int id)
+        {
+            var rao = await _repository.GetOutingById(id);
+            var dto = _mapper.Map<OutingGetListItemDTO>(rao);
+
+            return dto;
         }
     }
 }

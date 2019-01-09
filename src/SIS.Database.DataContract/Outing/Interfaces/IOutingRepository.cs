@@ -9,5 +9,8 @@ namespace RedStarter.Database.DataContract.Outing.Interfaces
     public interface IOutingRepository
     {
         Task<bool> CreateOuting(OutingCreateRAO rao);
+        Task<IEnumerable<OutingGetListItemRAO>> GetOutings();
+        Task<OutingGetListItemRAO> GetOutingById(int id);
+        Task<bool> DeleteOuting(int id);
     }
 }

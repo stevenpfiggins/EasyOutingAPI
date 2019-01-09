@@ -26,6 +26,7 @@ namespace RedStarter.API.Controllers.Outing
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> PostOuting(OutingCreateRequest request)
         {
             if (!ModelState.IsValid)
@@ -33,11 +34,10 @@ namespace RedStarter.API.Controllers.Outing
                 return StatusCode(400);
             }
 
-            var identityClaimNum = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
-
             var dto = _mapper.Map<OutingCreateDTO>(request);
             dto.CreatedOn = DateTime.Now;
-            dto.OwnerId = identityClaimNum;
+            dto.OwnerId = GetUser();
+
             switch (request.OutingType)
             {
                 case 1:
@@ -160,6 +160,54 @@ namespace RedStarter.API.Controllers.Outing
                 return StatusCode(201);
 
             throw new Exception();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetOutings()
+        {
+            if (!ModelState.IsValid)
+            {
+                return StatusCode(400);
+            }
+
+            var dto = await _manager.GetOutings();
+            var response = _mapper.Map<IEnumerable<OutingGetListItemResponse>>(dto);
+
+            return Ok(response);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetOutingById(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return StatusCode(400);
+            }
+
+            var dto = await _manager.GetOutingById(id);
+            var response = _mapper.Map<OutingGetListItemResponse>(dto);
+
+            return Ok(response);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteOuting(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return StatusCode(400);
+            }
+
+            if (await _manager.DeleteOuting(id))
+                return StatusCode(207);
+
+            throw new Exception();
+        }
+
+        private int GetUser()
+        {
+            var identityClaimNum = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            return identityClaimNum;
         }
     }
 }

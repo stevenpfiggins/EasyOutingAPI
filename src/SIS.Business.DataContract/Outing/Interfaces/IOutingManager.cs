@@ -10,6 +10,8 @@ namespace RedStarter.Business.DataContract.Outing.Interfaces
     public interface IOutingManager
     {
         Task<bool>CreateOuting(OutingCreateDTO dto);
-        Task<bool> ChangeIntToEnum(int outingType);
+        Task<IEnumerable<OutingGetListItemDTO>> GetOutings();
+        Task<OutingGetListItemDTO> GetOutingById(int id);
+        Task<bool> DeleteOuting(int id);
     }
 }
