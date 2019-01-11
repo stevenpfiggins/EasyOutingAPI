@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RedStarter.Database.Contexts;
 
 namespace RedStarter.Database.Migrations
 {
     [DbContext(typeof(SISContext))]
-    partial class SISContextModelSnapshot : ModelSnapshot
+    [Migration("20190109155941_changedOutingRequestIntToEnum")]
+    partial class changedOutingRequestIntToEnum
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -179,21 +181,6 @@ namespace RedStarter.Database.Migrations
                     b.ToTable("ExperienceTableAccess");
                 });
 
-
-            modelBuilder.Entity("RedStarter.Database.Entities.Interests.InterestsEntity", b =>
-                {
-                    b.Property<int>("TransactionId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("Interests");
-
-                    b.Property<int>("OwnerId");
-
-                    b.HasKey("TransactionId");
-
-                    b.ToTable("InterestsTableAccess");
-                    
             modelBuilder.Entity("RedStarter.Database.Entities.Outing.OutingEntity", b =>
                 {
                     b.Property<int>("OutingEntityId")
@@ -214,8 +201,6 @@ namespace RedStarter.Database.Migrations
                         .IsRequired();
 
                     b.Property<int>("OutingType");
-
-                    b.Property<int>("OwnerId");
 
                     b.HasKey("OutingEntityId");
 

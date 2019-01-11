@@ -4,6 +4,7 @@ using RedStarter.Business.DataContract.Authorization.DTOs;
 using RedStarter.Business.DataContract.Authorization.Interfaces;
 using RedStarter.Database.DataContract.Authorization.Interfaces;
 using RedStarter.Database.DataContract.Authorization.RAOs;
+using RedStarter.Database.DataContract.Roles.Interfaces;
 using System;
 using System.Threading.Tasks;
 

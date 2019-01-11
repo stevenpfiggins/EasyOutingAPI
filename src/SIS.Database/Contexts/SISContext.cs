@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using RedStarter.Database.Entities.Application;
 using RedStarter.Database.Entities.Interests;
+using RedStarter.Database.Entities.Outing;
 using RedStarter.Database.Entities.People;
 using RedStarter.Database.Entities.Roles;
 
@@ -23,6 +24,7 @@ namespace RedStarter.Database.Contexts
 
         public DbSet<InterestsEntity> InterestsTableAccess { get; set; }
         public DbSet<UserEntity> UserTableAccess { get; set; }
+        public DbSet<OutingEntity> OutingTableAccess { get; set; }
         public DbSet<ApplicationEntity> ApplicationTableAccess { get; set; }
         public DbSet<ContactEntity> ContactTableAccess { get; set; }
         public DbSet<DemographicEntity> DemographicTableAccess { get; set; }
