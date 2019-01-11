@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RedStarter.Database.Contexts;
 
 namespace RedStarter.Database.Migrations
 {
     [DbContext(typeof(SISContext))]
-    partial class SISContextModelSnapshot : ModelSnapshot
+    [Migration("20190109192712_update")]
+    partial class update
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -179,7 +181,6 @@ namespace RedStarter.Database.Migrations
                     b.ToTable("ExperienceTableAccess");
                 });
 
-
             modelBuilder.Entity("RedStarter.Database.Entities.Interests.InterestsEntity", b =>
                 {
                     b.Property<int>("TransactionId")
@@ -193,33 +194,6 @@ namespace RedStarter.Database.Migrations
                     b.HasKey("TransactionId");
 
                     b.ToTable("InterestsTableAccess");
-                    
-            modelBuilder.Entity("RedStarter.Database.Entities.Outing.OutingEntity", b =>
-                {
-                    b.Property<int>("OutingEntityId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CreatedBy")
-                        .IsRequired();
-
-                    b.Property<DateTimeOffset>("CreatedOn");
-
-                    b.Property<DateTimeOffset>("OutingDate");
-
-                    b.Property<string>("OutingDescription")
-                        .IsRequired();
-
-                    b.Property<string>("OutingName")
-                        .IsRequired();
-
-                    b.Property<int>("OutingType");
-
-                    b.Property<int>("OwnerId");
-
-                    b.HasKey("OutingEntityId");
-
-                    b.ToTable("OutingTableAccess");
                 });
 
             modelBuilder.Entity("RedStarter.Database.Entities.People.UserEntity", b =>

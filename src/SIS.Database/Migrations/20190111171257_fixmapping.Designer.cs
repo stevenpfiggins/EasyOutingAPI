@@ -10,8 +10,8 @@ using RedStarter.Database.Contexts;
 namespace RedStarter.Database.Migrations
 {
     [DbContext(typeof(SISContext))]
-    [Migration("20181217153941_initial")]
-    partial class initial
+    [Migration("20190111171257_fixmapping")]
+    partial class fixmapping
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -179,6 +179,21 @@ namespace RedStarter.Database.Migrations
                     b.HasKey("ApplicationEntityId");
 
                     b.ToTable("ExperienceTableAccess");
+                });
+
+            modelBuilder.Entity("RedStarter.Database.Entities.Interests.InterestsEntity", b =>
+                {
+                    b.Property<int>("TransactionId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Interests");
+
+                    b.Property<int>("OwnerId");
+
+                    b.HasKey("TransactionId");
+
+                    b.ToTable("InterestsTableAccess");
                 });
 
             modelBuilder.Entity("RedStarter.Database.Entities.People.UserEntity", b =>

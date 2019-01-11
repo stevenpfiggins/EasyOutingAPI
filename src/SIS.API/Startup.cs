@@ -15,19 +15,24 @@ using Microsoft.IdentityModel.Tokens;
 using RedStarter.API.MappingProfiles;
 using RedStarter.Business.DataContract.Application.Interfaces;
 using RedStarter.Business.DataContract.Authorization.Interfaces;
-using RedStarter.Business.DataContract.Outing.Interfaces;
+using RedStarter.Business.DataContract.Interests;
 using RedStarter.Business.Managers.Application;
 using RedStarter.Business.Managers.Authorization;
+using RedStarter.Business.Managers.Interests;
+using RedStarter.Business.DataContract.Outing.Interfaces;
 using RedStarter.Business.Managers.Outing;
 using RedStarter.Database.Application;
 using RedStarter.Database.Authorization;
 using RedStarter.Database.Contexts;
 using RedStarter.Database.DataContract.Application;
 using RedStarter.Database.DataContract.Authorization.Interfaces;
-using RedStarter.Database.DataContract.Outing.Interfaces;
+using RedStarter.Database.DataContract.Interests;
 using RedStarter.Database.DataContract.Roles.Interfaces;
 using RedStarter.Database.Entities.People;
 using RedStarter.Database.Entities.Roles;
+using RedStarter.Database.Interests;
+using RedStarter.Database.DataContract.Outing.Interfaces;
+using RedStarter.Database.DataContract.Roles.Interfaces;
 using RedStarter.Database.Outing;
 using RedStarter.Database.Roles;
 using RedStarter.Database.SeedData;
@@ -99,6 +104,7 @@ namespace RedStarter.API
             {
                 mc.AddProfile(new MappingProfile());
                 mc.AddProfile(new ApplicationMappingProfile());
+                mc.AddProfile(new InterestsMappingProfile());
                 mc.AddProfile(new OutingMappingProfile());
             });
 
@@ -112,8 +118,11 @@ namespace RedStarter.API
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IApplicationRepository, ApplicationRepository>();
             services.AddScoped<IUserApplicationManager, UserApplicationManager>();
+            services.AddScoped<IInterestsManager, InterestsManager>();
+            services.AddScoped<IInterestsRepository, InterestsRepository>();
             services.AddScoped<IOutingManager, OutingManager>();
             services.AddScoped<IOutingRepository, OutingRepository>();
+
 
             //======= Swagger =======
             services.AddSwaggerGen(c =>
