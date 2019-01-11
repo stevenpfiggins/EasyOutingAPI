@@ -162,6 +162,7 @@ namespace RedStarter.API.Controllers.Outing
             throw new Exception();
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetOutings()
         {
@@ -176,6 +177,7 @@ namespace RedStarter.API.Controllers.Outing
             return Ok(response);
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetOutingById(int id)
         {
@@ -191,6 +193,7 @@ namespace RedStarter.API.Controllers.Outing
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles ="Admin, User")]
         public async Task<IActionResult> DeleteOuting(int id)
         {
             if (!ModelState.IsValid)
@@ -203,6 +206,18 @@ namespace RedStarter.API.Controllers.Outing
 
             throw new Exception();
         }
+
+        //[HttpPut]
+        //[Authorize(Roles ="Admin, User")]
+        //public async Task<IActionResult> UpdateOuting(int id)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return StatusCode(400);
+        //    }
+
+            
+        //}
 
         private int GetUser()
         {
