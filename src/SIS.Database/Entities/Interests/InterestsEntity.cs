@@ -1,4 +1,5 @@
-﻿using RedStarter.Database.DataContract.Interests;
+﻿using RedStarter.API.DataContract.Interests;
+using RedStarter.Database.DataContract.Interests;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

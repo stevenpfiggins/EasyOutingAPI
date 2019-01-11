@@ -112,8 +112,8 @@ namespace RedStarter.API
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IApplicationRepository, ApplicationRepository>();
             services.AddScoped<IUserApplicationManager, UserApplicationManager>();
-            services.AddScoped<IinterestsManager, InterestsManager>();
-            services.AddScoped<IinterestsRepository, InterestsRepository>();
+            services.AddScoped<IInterestsManager, InterestsManager>();
+            services.AddScoped<IInterestsRepository, InterestsRepository>();
 
             //======= Swagger =======
             services.AddSwaggerGen(c =>

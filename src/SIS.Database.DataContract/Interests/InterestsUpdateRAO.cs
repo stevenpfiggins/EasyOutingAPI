@@ -5,9 +5,9 @@ using System.Text;
 
 namespace RedStarter.Database.DataContract.Interests
 {
-    public class InterestsCreateRAO
+    public class InterestsUpdateRAO
     {
-        public int UserId { get; set; }
-        public List<InterestEnum> Interests { get; set; }
+        public int TransactionId { get; set; }
+        public InterestEnum Interest { get; set; }
     }
 }

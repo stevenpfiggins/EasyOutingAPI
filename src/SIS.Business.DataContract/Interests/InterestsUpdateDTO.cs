@@ -3,11 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace RedStarter.Database.DataContract.Interests
+namespace RedStarter.Business.DataContract.Interests
 {
-    public class InterestsCreateRAO
+    public class InterestsUpdateDTO
     {
-        public int UserId { get; set; }
+        public int TransactionId { get; set; }
         public List<InterestEnum> Interests { get; set; }
     }
 }

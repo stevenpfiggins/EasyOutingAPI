@@ -17,6 +17,14 @@ namespace RedStarter.API.MappingProfiles
             CreateMap<InterestsCreateRequest, InterestsCreateDTO>();
             CreateMap<InterestsCreateDTO, InterestsCreateRAO>();
             CreateMap<InterestsCreateRAO, InterestsEntity>();
+
+            CreateMap<InterestsEntity, InterestsGetListItemRAO>();
+            CreateMap<InterestsGetListItemRAO, InterestsGetListItemDTO>();
+            CreateMap<InterestsGetListItemDTO, InterestsResponse>();
+
+            CreateMap<InterestsUpdateItem, InterestsUpdateDTO>();
+            CreateMap<InterestsUpdateDTO, InterestsUpdateRAO>();
+            CreateMap<InterestsUpdateRAO, InterestsEntity>();
         }
     }
 }

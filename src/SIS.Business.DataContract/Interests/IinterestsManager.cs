@@ -5,8 +5,13 @@ using System.Threading.Tasks;
 
 namespace RedStarter.Business.DataContract.Interests
 {
-    public interface IinterestsManager
+
+    public interface IInterestsManager
     {
         Task<bool> CreateInterests(InterestsCreateDTO dto);
+        Task<IEnumerable<InterestsGetListItemDTO>> GetInterests();
+        Task<bool> DeleteInterests(int id);
+        Task<bool> UpdateInterests(InterestsUpdateDTO dto);
+
     }
 }

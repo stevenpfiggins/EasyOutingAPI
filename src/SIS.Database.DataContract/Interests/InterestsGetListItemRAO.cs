@@ -5,7 +5,8 @@ using System.Text;
 
 namespace RedStarter.Database.DataContract.Interests
 {
-    public class InterestsCreateRAO
+
+    public class InterestsGetListItemRAO
     {
         public int UserId { get; set; }
         public List<InterestEnum> Interests { get; set; }

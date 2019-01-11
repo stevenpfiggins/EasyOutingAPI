@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using RedStarter.API.DataContract.Interests;
 using RedStarter.Database.Contexts;
 using RedStarter.Database.DataContract.Interests;
 using RedStarter.Database.Entities.Interests;
@@ -11,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace RedStarter.Database.Interests
 {
-    public class InterestsRepository : IinterestsRepository
+    public class InterestsRepository : IInterestsRepository
     {
         private readonly SISContext _context;
         private readonly IMapper _mapper;
@@ -38,8 +40,34 @@ namespace RedStarter.Database.Interests
             }
 
             return await _context.SaveChangesAsync() == rao.Interests.Count;
-
         }
 
+        public async Task<bool> DeleteInterests(int id)
+        {
+            var entity = await _context.InterestsTableAccess.SingleAsync(e => e.TransactionId == id);
+            _context.InterestsTableAccess.Remove(entity);
+
+            return await _context.SaveChangesAsync() == 1;
+        }
+
+        public async Task<IEnumerable<InterestsGetListItemRAO>> GetInterests()
+        {
+            var query = await _context.InterestsTableAccess.ToArrayAsync();
+            var array = _mapper.Map<IEnumerable<InterestsGetListItemRAO>>(query);
+
+            return array;
+        }
+
+        public async Task<bool> UpdateInterests(InterestsUpdateRAO rao)
+        {
+            var entity = await _context
+            .InterestsTableAccess
+            .SingleOrDefaultAsync(e => e.TransactionId == rao.TransactionId);
+
+            entity.Interests = rao.Interest;
+
+
+            return await _context.SaveChangesAsync() == 1;
+        }
     }
 }
