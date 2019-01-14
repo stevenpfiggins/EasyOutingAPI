@@ -13,6 +13,6 @@ namespace RedStarter.Database.Entities.Interests
         [Key]
         public int TransactionId { get; set; }
         public int OwnerId { get; set; }
-        public InterestEnum Interests { get; set; }
+        public int Interests { get; set; }
     }
 }

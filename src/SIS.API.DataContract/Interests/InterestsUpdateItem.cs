@@ -7,6 +7,6 @@ namespace RedStarter.API.DataContract.Interests
     public class InterestsUpdateItem
     {
         public int TransactionId { get; set; }
-        public List<InterestEnum> Interests { get; set; }
+        public List<int> Interests { get; set; }
     }
 }

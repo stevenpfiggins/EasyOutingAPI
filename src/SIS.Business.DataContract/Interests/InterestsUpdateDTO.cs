@@ -8,6 +8,6 @@ namespace RedStarter.Business.DataContract.Interests
     public class InterestsUpdateDTO
     {
         public int TransactionId { get; set; }
-        public List<InterestEnum> Interests { get; set; }
+        public List<int> Interests { get; set; }
     }
 }

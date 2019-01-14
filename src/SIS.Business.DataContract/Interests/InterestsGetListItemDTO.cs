@@ -7,7 +7,7 @@ namespace RedStarter.Business.DataContract.Interests
 {
     public class InterestsGetListItemDTO
     {
-        public int UserId { get; set; }
-        public List<InterestEnum> Interests { get; set; }
+        public int OwnerId { get; set; }
+        public List<int> Interests { get; set; }
     }
 }

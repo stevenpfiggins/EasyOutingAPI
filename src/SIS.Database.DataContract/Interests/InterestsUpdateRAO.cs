@@ -8,6 +8,6 @@ namespace RedStarter.Database.DataContract.Interests
     public class InterestsUpdateRAO
     {
         public int TransactionId { get; set; }
-        public InterestEnum Interest { get; set; }
+        public List<int> Interests { get; set; }
     }
 }

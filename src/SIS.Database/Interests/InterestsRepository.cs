@@ -8,6 +8,7 @@ using RedStarter.Database.Entities.Interests;
 using RedStarter.Database.Entities.People;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -27,7 +28,7 @@ namespace RedStarter.Database.Interests
 
         public async Task<bool> CreateInterests(InterestsCreateRAO rao)
         {
-            foreach (InterestEnum Interest in rao.Interests)
+            foreach (int Interest in rao.Interests)
             {
                 var entity = new InterestsEntity()
                 {
@@ -50,12 +51,20 @@ namespace RedStarter.Database.Interests
             return await _context.SaveChangesAsync() == 1;
         }
 
-        public async Task<IEnumerable<InterestsGetListItemRAO>> GetInterests()
+        public async Task<InterestsGetListItemRAO> GetInterests(int OwnerId)
         {
-            var query = await _context.InterestsTableAccess.ToArrayAsync();
-            var array = _mapper.Map<IEnumerable<InterestsGetListItemRAO>>(query);
+            var query = _context.InterestsTableAccess.Where(e => e.OwnerId == OwnerId);
+            var rao = new InterestsGetListItemRAO()
+            {
+                OwnerId = OwnerId,
+                Interests = new List<int>()                
+            };
+            foreach (InterestsEntity entity in query)
+            {
+                rao.Interests.Add(entity.Interests);
+            }
 
-            return array;
+            return rao;
         }
 
         public async Task<bool> UpdateInterests(InterestsUpdateRAO rao)

@@ -6,7 +6,8 @@ namespace RedStarter.API.DataContract.Interests
 {
     public class InterestsResponse
     {
-        public List<InterestEnum> Interests { get; set; }
-        public int UserId { get; set; }
+        public List<int> Interests { get; set; }
+        public int OwnerId { get; set; }
+
     }
 }

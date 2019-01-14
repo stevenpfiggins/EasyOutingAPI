@@ -31,10 +31,10 @@ namespace RedStarter.Business.Managers.Interests
         }
 
 
-        public async Task<IEnumerable<InterestsGetListItemDTO>> GetInterests()
+        public async Task<InterestsGetListItemDTO> GetInterests(int id)
         {
-            var rao = await _repository.GetInterests();
-            var dto = _mapper.Map<IEnumerable<InterestsGetListItemDTO>>(rao);
+            var rao = await _repository.GetInterests(id);
+            var dto = _mapper.Map<InterestsGetListItemDTO>(rao);
 
             return dto;
         }
