@@ -63,6 +63,7 @@ namespace RedStarter.API.Controllers.InterestsController
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> DeleteInterests(int id)
         {
             if (await _manager.DeleteInterests(id))

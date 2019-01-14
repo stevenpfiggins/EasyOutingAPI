@@ -53,5 +53,17 @@ namespace RedStarter.Business.Managers.Outing
 
             return dto;
         }
+
+        public async Task<bool> OutingUpdate(OutingUpdateDTO dto)
+        {
+            var rao = _mapper.Map<OutingUpdateRAO>(dto);
+
+            if (await _repository.OutingUpdate(rao))
+            {
+                return true;
+            }
+            return false;
+        }
+
     }
 }

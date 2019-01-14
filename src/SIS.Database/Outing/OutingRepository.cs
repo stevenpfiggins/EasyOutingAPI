@@ -54,5 +54,19 @@ namespace RedStarter.Database.Outing
 
             return rao;
         }
+
+        public async Task<bool> OutingUpdate(OutingUpdateRAO rao)
+        {
+            var entity = await _context
+                .OutingTableAccess
+                .SingleOrDefaultAsync(e => e.OwnerId == rao.OwnerId);
+
+            entity.OutingDate = rao.OutingDate;
+            entity.OutingDescription = rao.OutingDescription;
+            entity.OutingName = rao.OutingName;
+
+
+            return await _context.SaveChangesAsync() == 1;
+        }
     }
 }

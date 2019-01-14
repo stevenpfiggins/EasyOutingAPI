@@ -207,17 +207,22 @@ namespace RedStarter.API.Controllers.Outing
             throw new Exception();
         }
 
-        //[HttpPut]
-        //[Authorize(Roles ="Admin, User")]
-        //public async Task<IActionResult> UpdateOuting(int id)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return StatusCode(400);
-        //    }
+        [HttpPut]
+        //[Authorize(Roles = "Admin, User")]
+        public async Task<IActionResult> OutingUpdate(OutingUpdateRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return StatusCode(400);
+            }
+            var dto = _mapper.Map<OutingUpdateDTO>(request);
+            if (await _manager.OutingUpdate(dto))
+            {
+                return StatusCode(201);
+            }
+            throw new Exception();
 
-            
-        //}
+        }
 
         private int GetUser()
         {

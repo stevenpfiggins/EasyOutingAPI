@@ -1,4 +1,6 @@
-﻿using RedStarter.Database.DataContract.Outing.RAOs;
+﻿using RedStarter.API.DataContract.Outing;
+using RedStarter.Business.DataContract.Outing.DTOs;
+using RedStarter.Database.DataContract.Outing.RAOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,5 +14,6 @@ namespace RedStarter.Database.DataContract.Outing.Interfaces
         Task<IEnumerable<OutingGetListItemRAO>> GetOutings();
         Task<OutingGetListItemRAO> GetOutingById(int id);
         Task<bool> DeleteOuting(int id);
+        Task<bool> OutingUpdate(OutingUpdateRAO rao);
     }
 }
