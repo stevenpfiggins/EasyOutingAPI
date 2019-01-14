@@ -39,8 +39,8 @@ namespace RedStarter.API.Controllers.InterestsController
 
             dto.UserId = identityClaimNum;
 
-            await _manager.CreateInterests(dto);
-
+            if (await _manager.CreateInterests(dto))
+                return StatusCode(201);
             throw new Exception();
         }
 

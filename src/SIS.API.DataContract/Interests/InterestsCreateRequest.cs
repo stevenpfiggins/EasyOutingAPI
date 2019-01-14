@@ -13,6 +13,7 @@ namespace RedStarter.API.DataContract.Interests
     }
     public class InterestsCreateRequest
     {
+        public int UserId { get; set; }
         public List<int> Interests { get; set; }
 
     }

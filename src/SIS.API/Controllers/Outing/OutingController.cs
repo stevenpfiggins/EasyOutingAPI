@@ -26,7 +26,7 @@ namespace RedStarter.API.Controllers.Outing
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin, User")]
+        //[Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> PostOuting(OutingCreateRequest request)
         {
             if (!ModelState.IsValid)
@@ -178,7 +178,7 @@ namespace RedStarter.API.Controllers.Outing
         }
 
         [AllowAnonymous]
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetOutingById(int id)
         {
             if (!ModelState.IsValid)
@@ -207,7 +207,7 @@ namespace RedStarter.API.Controllers.Outing
             throw new Exception();
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         //[Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> OutingUpdate(OutingUpdateRequest request)
         {
@@ -216,6 +216,7 @@ namespace RedStarter.API.Controllers.Outing
                 return StatusCode(400);
             }
             var dto = _mapper.Map<OutingUpdateDTO>(request);
+            dto.OwnerId = GetUser();
             if (await _manager.OutingUpdate(dto))
             {
                 return StatusCode(201);
