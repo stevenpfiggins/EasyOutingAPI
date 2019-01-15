@@ -18,7 +18,7 @@ namespace RedStarter.API.MappingProfiles
             CreateMap<InterestsCreateDTO, InterestsCreateRAO>();
             CreateMap<InterestsCreateRAO, InterestsEntity>();
 
-            CreateMap<InterestsEntity, InterestsGetListItemRAO>();
+            CreateMap<InterestsEntity, InterestsGetListItemRAO>().ForMember(x => x.Interests, opt => opt.Ignore());
             CreateMap<InterestsGetListItemRAO, InterestsGetListItemDTO>();
             CreateMap<InterestsGetListItemDTO, InterestsResponse>();
 

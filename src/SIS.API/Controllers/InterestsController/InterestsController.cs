@@ -37,16 +37,16 @@ namespace RedStarter.API.Controllers.InterestsController
 
             var identityClaimNum = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-            dto.UserId = identityClaimNum;
+            dto.OwnerId = identityClaimNum;
 
-            await _manager.CreateInterests(dto);
-
+            if (await _manager.CreateInterests(dto))
+                return StatusCode(201);
             throw new Exception();
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         [Authorize(Roles = "User")]
-        public async Task<IActionResult> GetInterests()
+        public async Task<IActionResult> GetInterests(int id)
         {
             if (!ModelState.IsValid)
 
@@ -56,8 +56,8 @@ namespace RedStarter.API.Controllers.InterestsController
 
             var identityClaimNum = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-            var dto = await _manager.GetInterests();
-            var response = _mapper.Map<IEnumerable<InterestsResponse>>(dto);
+            var dto = await _manager.GetInterests(id);
+            var response = _mapper.Map<InterestsResponse>(dto);
 
             return Ok(response);
         }
@@ -72,8 +72,8 @@ namespace RedStarter.API.Controllers.InterestsController
 
         }
 
-        [HttpPut]
-        [Authorize(Roles = "Admin, User")]
+        [HttpPut("{id}")]
+        //[Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> InterestsUpdate(InterestsUpdateItem request)
         {
 
