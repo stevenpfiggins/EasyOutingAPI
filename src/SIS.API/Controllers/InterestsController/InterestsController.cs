@@ -37,7 +37,7 @@ namespace RedStarter.API.Controllers.InterestsController
 
             var identityClaimNum = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-            dto.UserId = identityClaimNum;
+            dto.OwnerId = identityClaimNum;
 
             if (await _manager.CreateInterests(dto))
                 return StatusCode(201);

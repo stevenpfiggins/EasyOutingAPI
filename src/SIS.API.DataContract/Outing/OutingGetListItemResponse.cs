@@ -8,7 +8,9 @@ namespace RedStarter.API.DataContract.Outing
     {
         public int OutingEntityId { get; set; }
         public string OutingName { get; set; }
+        public string OutingLocation { get; set; }
         public DateTimeOffset OutingDate { get; set; }
         public int OutingType { get; set; }
+        public DateTimeOffset CreatedOn { get; set; }
     }
 }
