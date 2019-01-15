@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RedStarter.Database.Migrations
 {
-    public partial class initial : Migration
+    public partial class removedEnumsAndTweakedTables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -122,6 +122,79 @@ namespace RedStarter.Database.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ExperienceTableAccess", x => x.ApplicationEntityId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "InterestsTableAccess",
+                columns: table => new
+                {
+                    InterestsEntityId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    OwnerId = table.Column<int>(nullable: false),
+                    UserName = table.Column<string>(nullable: false),
+                    UserLocation = table.Column<string>(nullable: true),
+                    Canoeing = table.Column<bool>(nullable: false),
+                    Kayaking = table.Column<bool>(nullable: false),
+                    Hiking = table.Column<bool>(nullable: false),
+                    RockClimbing = table.Column<bool>(nullable: false),
+                    Camping = table.Column<bool>(nullable: false),
+                    Fishing = table.Column<bool>(nullable: false),
+                    SightSeeing = table.Column<bool>(nullable: false),
+                    Football = table.Column<bool>(nullable: false),
+                    Basketball = table.Column<bool>(nullable: false),
+                    Soccer = table.Column<bool>(nullable: false),
+                    Baseball = table.Column<bool>(nullable: false),
+                    Hockey = table.Column<bool>(nullable: false),
+                    Tennis = table.Column<bool>(nullable: false),
+                    Golf = table.Column<bool>(nullable: false),
+                    Running = table.Column<bool>(nullable: false),
+                    WeightLifting = table.Column<bool>(nullable: false),
+                    Yoga = table.Column<bool>(nullable: false),
+                    Gymnastics = table.Column<bool>(nullable: false),
+                    Restaurants = table.Column<bool>(nullable: false),
+                    Bars = table.Column<bool>(nullable: false),
+                    Wineries = table.Column<bool>(nullable: false),
+                    Consoles = table.Column<bool>(nullable: false),
+                    BoardGames = table.Column<bool>(nullable: false),
+                    CardGames = table.Column<bool>(nullable: false),
+                    Arcades = table.Column<bool>(nullable: false),
+                    Movies = table.Column<bool>(nullable: false),
+                    Theatre = table.Column<bool>(nullable: false),
+                    Concerts = table.Column<bool>(nullable: false),
+                    Festivals = table.Column<bool>(nullable: false),
+                    Clubs = table.Column<bool>(nullable: false),
+                    Bowling = table.Column<bool>(nullable: false),
+                    Zoo = table.Column<bool>(nullable: false),
+                    Painting = table.Column<bool>(nullable: false),
+                    Knitting = table.Column<bool>(nullable: false),
+                    Pottery = table.Column<bool>(nullable: false),
+                    Museums = table.Column<bool>(nullable: false),
+                    Aquariums = table.Column<bool>(nullable: false),
+                    Galleries = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_InterestsTableAccess", x => x.InterestsEntityId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OutingTableAccess",
+                columns: table => new
+                {
+                    OutingEntityId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    OutingName = table.Column<string>(nullable: false),
+                    OutingDescription = table.Column<string>(nullable: false),
+                    OutingLocation = table.Column<string>(nullable: false),
+                    OutingDate = table.Column<DateTimeOffset>(nullable: false),
+                    OutingType = table.Column<int>(nullable: false),
+                    CreatedBy = table.Column<string>(nullable: false),
+                    CreatedOn = table.Column<DateTimeOffset>(nullable: false),
+                    OwnerId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OutingTableAccess", x => x.OutingEntityId);
                 });
 
             migrationBuilder.CreateTable(
@@ -301,6 +374,12 @@ namespace RedStarter.Database.Migrations
 
             migrationBuilder.DropTable(
                 name: "ExperienceTableAccess");
+
+            migrationBuilder.DropTable(
+                name: "InterestsTableAccess");
+
+            migrationBuilder.DropTable(
+                name: "OutingTableAccess");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
