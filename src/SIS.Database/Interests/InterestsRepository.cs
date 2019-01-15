@@ -8,6 +8,7 @@ using RedStarter.Database.Entities.Interests;
 using RedStarter.Database.Entities.People;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -34,7 +35,7 @@ namespace RedStarter.Database.Interests
             return await _context.SaveChangesAsync() == 1;
         }
 
-        public async Task<IEnumerable<InterestsGetListItemRAO>> GetInterests()
+        public async Task<InterestsGetListItemRAO> GetInterests(int OwnerId)
         {
             var entity = await _context.InterestsTableAccess.ToArrayAsync();
             var rao = _mapper.Map<IEnumerable<InterestsGetListItemRAO>>(entity);

@@ -26,7 +26,7 @@ namespace RedStarter.API.Controllers.Outing
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin, User")]
+        //[Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> PostOuting(OutingCreateRequest request)
         {
             if (!ModelState.IsValid)
@@ -98,6 +98,7 @@ namespace RedStarter.API.Controllers.Outing
                 return StatusCode(400);
             }
             var dto = _mapper.Map<OutingUpdateDTO>(request);
+            dto.OwnerId = GetUser();
             if (await _manager.OutingUpdate(dto))
             {
                 return StatusCode(201);

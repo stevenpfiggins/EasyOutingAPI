@@ -24,25 +24,26 @@ namespace RedStarter.Business.Managers.Interests
         {
             var rao = _mapper.Map<InterestsCreateRAO>(dto);
 
-            await _repository.CreateInterests(rao);
+            if (await _repository.CreateInterests(rao))
+                return true;
 
             throw new NotImplementedException();
         }
 
 
-        public async Task<IEnumerable<InterestsGetListItemDTO>> GetInterests()
+        public async Task<InterestsGetListItemDTO> GetInterests(int id)
         {
-            var rao = await _repository.GetInterests();
-            var dto = _mapper.Map<IEnumerable<InterestsGetListItemDTO>>(rao);
+            var rao = await _repository.GetInterests(id);
+            var dto = _mapper.Map<InterestsGetListItemDTO>(rao);
 
             return dto;
         }
 
         public async Task<bool> DeleteInterests(int id)
         {
-            await _repository.DeleteInterests(id);
-
+           if  (await _repository.DeleteInterests(id))
             return true;
+            throw new NotImplementedException();
         }
 
         public async Task<bool> UpdateInterests(InterestsUpdateDTO dto)
