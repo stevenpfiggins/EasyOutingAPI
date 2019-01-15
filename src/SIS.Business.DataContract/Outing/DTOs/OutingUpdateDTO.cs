@@ -6,11 +6,11 @@ namespace RedStarter.Business.DataContract.Outing.DTOs
 {
     public class OutingUpdateDTO
     {
+        public int OutingEntityId { get; set; }
         public string OutingName { get; set; }
         public string OutingDescription { get; set; }
+        public string OutingLocation { get; set; }
         public DateTimeOffset OutingDate { get; set; }
-        public OutingType OutingType { get; set; }
-        public string CreatedBy { get; set; }
-        public int OwnerId { get; set; }
+        public int OutingType { get; set; }
     }
 }

@@ -31,26 +31,18 @@ namespace RedStarter.Database.Outing
             return await _context.SaveChangesAsync() == 1;
         }
 
-        public async Task<bool> DeleteOuting(int id)
-        {
-            var query = await _context.OutingTableAccess.SingleAsync(q => q.OutingEntityId == id);
-            _context.OutingTableAccess.Remove(query);
-
-            return await _context.SaveChangesAsync() == 1;
-        }
-
         public async Task<IEnumerable<OutingGetListItemRAO>> GetOutings()
         {
-            var query = await _context.OutingTableAccess.ToArrayAsync();
-            var rao = _mapper.Map<IEnumerable<OutingGetListItemRAO>>(query);
+            var entity = await _context.OutingTableAccess.ToArrayAsync();
+            var rao = _mapper.Map<IEnumerable<OutingGetListItemRAO>>(entity);
 
             return rao;
         }
 
         public async Task<OutingGetListItemRAO> GetOutingById(int id)
         {
-            var query = await _context.OutingTableAccess.SingleAsync(q => q.OutingEntityId == id);
-            var rao = _mapper.Map<OutingGetListItemRAO>(query);
+            var entity = await _context.OutingTableAccess.SingleAsync(e => e.OutingEntityId == id);
+            var rao = _mapper.Map<OutingGetListItemRAO>(entity);
 
             return rao;
         }
@@ -59,12 +51,20 @@ namespace RedStarter.Database.Outing
         {
             var entity = await _context
                 .OutingTableAccess
-                .SingleOrDefaultAsync(e => e.OwnerId == rao.OwnerId);
+                .SingleOrDefaultAsync(e => e.OutingEntityId == rao.OutingEntityId);
 
             entity.OutingDate = rao.OutingDate;
             entity.OutingDescription = rao.OutingDescription;
             entity.OutingName = rao.OutingName;
+            entity.OutingType = rao.OutingType;
 
+            return await _context.SaveChangesAsync() == 1;
+        }
+
+        public async Task<bool> DeleteOuting(int id)
+        {
+            var entity = await _context.OutingTableAccess.SingleAsync(e => e.OutingEntityId == id);
+            _context.OutingTableAccess.Remove(entity);
 
             return await _context.SaveChangesAsync() == 1;
         }
