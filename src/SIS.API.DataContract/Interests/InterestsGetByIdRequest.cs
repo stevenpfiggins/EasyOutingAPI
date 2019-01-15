@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RedStarter.API.DataContract.Interests
 {
-    public class InterestsUpdateItem
+    public class InterestsGetByIdRequest
     {
         public int InterestsEntityId { get; set; }
         public int OwnerId { get; set; }

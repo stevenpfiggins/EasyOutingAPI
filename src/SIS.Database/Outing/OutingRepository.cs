@@ -39,10 +39,10 @@ namespace RedStarter.Database.Outing
             return rao;
         }
 
-        public async Task<OutingGetListItemRAO> GetOutingById(int id)
+        public async Task<OutingGetByIdRAO> GetOutingById(int id)
         {
             var entity = await _context.OutingTableAccess.SingleAsync(e => e.OutingEntityId == id);
-            var rao = _mapper.Map<OutingGetListItemRAO>(entity);
+            var rao = _mapper.Map<OutingGetByIdRAO>(entity);
 
             return rao;
         }

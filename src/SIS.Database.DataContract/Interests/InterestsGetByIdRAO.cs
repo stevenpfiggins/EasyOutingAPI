@@ -1,14 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace RedStarter.API.DataContract.Interests
+namespace RedStarter.Database.DataContract.Interests
 {
-    public class InterestsUpdateItem
+    public class InterestsGetByIdRAO
     {
+        [Key]
         public int InterestsEntityId { get; set; }
+
+        [Required]
         public int OwnerId { get; set; }
+
+        [Required]
         public string UserName { get; set; }
+
         public string UserLocation { get; set; }
         public bool Canoeing { get; set; }
         public bool Kayaking { get; set; }

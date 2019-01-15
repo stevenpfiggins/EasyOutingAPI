@@ -22,6 +22,10 @@ namespace RedStarter.API.MappingProfiles
             CreateMap<OutingGetListItemRAO, OutingGetListItemDTO>();
             CreateMap<OutingGetListItemDTO, OutingGetListItemResponse>();
 
+            CreateMap<OutingEntity, OutingGetByIdRAO>();
+            CreateMap<OutingGetByIdRAO, OutingGetByIdDTO>();
+            CreateMap<OutingGetByIdDTO, OutingGetByIdRequest>();
+
             CreateMap<OutingUpdateRequest, OutingUpdateDTO>();
             CreateMap<OutingUpdateDTO, OutingUpdateRAO>();
             CreateMap<OutingUpdateRAO, OutingEntity>();

@@ -30,11 +30,19 @@ namespace RedStarter.Business.Managers.Interests
             throw new NotImplementedException();
         }
 
-
-        public async Task<InterestsGetListItemDTO> GetInterests(int id)
+        public async Task<IEnumerable<InterestsGetListItemDTO>> GetInterests()
         {
-            var rao = await _repository.GetInterests(id);
-            var dto = _mapper.Map<InterestsGetListItemDTO>(rao);
+            var rao = await _repository.GetInterests();
+            var dto = _mapper.Map<IEnumerable<InterestsGetListItemDTO>>(rao);
+
+            return dto;
+        }
+
+
+        public async Task<InterestsGetByIdDTO> GetInterestsById(int id)
+        {
+            var rao = await _repository.GetInterestsById(id);
+            var dto = _mapper.Map<InterestsGetByIdDTO>(rao);
 
             return dto;
         }

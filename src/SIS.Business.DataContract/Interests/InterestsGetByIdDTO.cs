@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RedStarter.API.DataContract.Interests
+namespace RedStarter.Business.DataContract.Interests
 {
-    public class InterestsUpdateItem
+    public class InterestsGetByIdDTO
     {
         public int InterestsEntityId { get; set; }
         public int OwnerId { get; set; }

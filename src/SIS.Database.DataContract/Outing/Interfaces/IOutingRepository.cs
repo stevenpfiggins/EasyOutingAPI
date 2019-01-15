@@ -12,7 +12,7 @@ namespace RedStarter.Database.DataContract.Outing.Interfaces
     {
         Task<bool> CreateOuting(OutingCreateRAO rao);
         Task<IEnumerable<OutingGetListItemRAO>> GetOutings();
-        Task<OutingGetListItemRAO> GetOutingById(int id);
+        Task<OutingGetByIdRAO> GetOutingById(int id);
         Task<bool> DeleteOuting(int id);
         Task<bool> OutingUpdate(OutingUpdateRAO rao);
     }

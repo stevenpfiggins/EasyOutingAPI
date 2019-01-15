@@ -10,8 +10,9 @@ namespace RedStarter.Database.DataContract.Interests
     public interface IInterestsRepository
     {
         Task<bool> CreateInterests(InterestsCreateRAO rao);
-        Task<InterestsGetListItemRAO> GetInterests(int id);
-        Task<bool> DeleteInterests(int id);
+        Task<IEnumerable<InterestsGetListItemRAO>> GetInterests();
+        Task<InterestsGetByIdRAO> GetInterestsById(int id);
         Task<bool> UpdateInterests(InterestsUpdateRAO rao);
+        Task<bool> DeleteInterests(int id);
     }
 }

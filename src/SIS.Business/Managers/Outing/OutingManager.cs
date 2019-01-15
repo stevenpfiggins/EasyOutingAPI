@@ -31,13 +31,6 @@ namespace RedStarter.Business.Managers.Outing
             throw new NotImplementedException();
         }
 
-        public async Task<bool> DeleteOuting(int id)
-        {
-            if (await _repository.DeleteOuting(id))
-                return true;
-            throw new NotImplementedException();
-        }
-
         public async Task<IEnumerable<OutingGetListItemDTO>> GetOutings()
         {
             var rao = await _repository.GetOutings();
@@ -46,10 +39,10 @@ namespace RedStarter.Business.Managers.Outing
             return dto;
         }
 
-        public async Task<OutingGetListItemDTO> GetOutingById(int id)
+        public async Task<OutingGetByIdDTO> GetOutingById(int id)
         {
             var rao = await _repository.GetOutingById(id);
-            var dto = _mapper.Map<OutingGetListItemDTO>(rao);
+            var dto = _mapper.Map<OutingGetByIdDTO>(rao);
 
             return dto;
         }
@@ -63,6 +56,13 @@ namespace RedStarter.Business.Managers.Outing
                 return true;
             }
             return false;
+        }
+
+        public async Task<bool> DeleteOuting(int id)
+        {
+            if (await _repository.DeleteOuting(id))
+                return true;
+            throw new NotImplementedException();
         }
 
     }

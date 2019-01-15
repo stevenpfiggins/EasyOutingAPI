@@ -8,6 +8,7 @@ namespace RedStarter.Database.DataContract.Interests
     public class InterestsUpdateRAO
     {
         public int InterestsEntityId { get; set; }
+        public int OwnerId { get; set; }
         public string UserName { get; set; }
         public string UserLocation { get; set; }
         public bool Canoeing { get; set; }

@@ -35,10 +35,18 @@ namespace RedStarter.Database.Interests
             return await _context.SaveChangesAsync() == 1;
         }
 
-        public async Task<InterestsGetListItemRAO> GetInterests(int OwnerId)
+        public async Task<IEnumerable<InterestsGetListItemRAO>> GetInterests()
         {
             var entity = await _context.InterestsTableAccess.ToArrayAsync();
             var rao = _mapper.Map<IEnumerable<InterestsGetListItemRAO>>(entity);
+
+            return rao;
+        }
+
+        public async Task<InterestsGetByIdRAO> GetInterestsById(int id)
+        {
+            var entity = await _context.InterestsTableAccess.SingleOrDefaultAsync(e => e.InterestsEntityId == id);
+            var rao = _mapper.Map<InterestsGetByIdRAO>(entity);
 
             return rao;
         }

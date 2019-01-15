@@ -9,6 +9,7 @@ namespace RedStarter.Database.DataContract.Interests
     public class InterestsGetListItemRAO
     {
         public int InterestsEntityId { get; set; }
+        public int OwnerId { get; set; }
         public string UserName { get; set; }
         public string UserLocation { get; set; }
     }

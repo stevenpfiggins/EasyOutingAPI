@@ -9,7 +9,8 @@ namespace RedStarter.Business.DataContract.Interests
     public interface IInterestsManager
     {
         Task<bool> CreateInterests(InterestsCreateDTO dto);
-        Task<InterestsGetListItemDTO> GetInterests(int id);
+        Task<IEnumerable<InterestsGetListItemDTO>> GetInterests();
+        Task<InterestsGetByIdDTO> GetInterestsById(int id);
         Task<bool> DeleteInterests(int id);
         Task<bool> UpdateInterests(InterestsUpdateDTO dto);
 

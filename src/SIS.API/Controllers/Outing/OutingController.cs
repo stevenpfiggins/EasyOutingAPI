@@ -26,7 +26,7 @@ namespace RedStarter.API.Controllers.Outing
         }
 
         [HttpPost]
-        //[Authorize(Roles = "Admin, User")]
+        [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> PostOuting(OutingCreateRequest request)
         {
             if (!ModelState.IsValid)
@@ -69,9 +69,28 @@ namespace RedStarter.API.Controllers.Outing
             }
 
             var dto = await _manager.GetOutingById(id);
-            var response = _mapper.Map<OutingGetListItemResponse>(dto);
+            var response = _mapper.Map<OutingGetByIdRequest>(dto);
 
             return Ok(response);
+        }
+
+        [HttpPut("{id}")]
+        [Authorize(Roles = "Admin, User")]
+        public async Task<IActionResult> OutingUpdate(OutingUpdateRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return StatusCode(400);
+            }
+
+            var dto = _mapper.Map<OutingUpdateDTO>(request);
+
+            if (await _manager.OutingUpdate(dto))
+            {
+                return StatusCode(201);
+            }
+            throw new Exception();
+
         }
 
         [HttpDelete("{id}")]
@@ -84,27 +103,9 @@ namespace RedStarter.API.Controllers.Outing
             }
 
             if (await _manager.DeleteOuting(id))
-                return StatusCode(207);
+                return StatusCode(204);
 
             throw new Exception();
-        }
-
-        [HttpPut("{id}")]
-        [Authorize(Roles = "Admin, User")]
-        public async Task<IActionResult> OutingUpdate(OutingUpdateRequest request)
-        {
-            if (!ModelState.IsValid)
-            {
-                return StatusCode(400);
-            }
-            var dto = _mapper.Map<OutingUpdateDTO>(request);
-            dto.OwnerId = GetUser();
-            if (await _manager.OutingUpdate(dto))
-            {
-                return StatusCode(201);
-            }
-            throw new Exception();
-
         }
 
         private int GetUser()
