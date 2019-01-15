@@ -51,6 +51,8 @@ namespace RedStarter.Database.Authorization
 
             var result = await _userManager.CreateAsync(user, password);
 
+            await _userManager.AddToRoleAsync(user, "User");
+
             if (result.Succeeded)
             {
                 var rao = _mapper.Map<ReceivedExistingUserRAO>(user);

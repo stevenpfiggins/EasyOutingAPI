@@ -58,7 +58,7 @@ namespace RedStarter.API.Controllers.Outing
 
             return Ok(response);
         }
-
+        
         [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetOutingById(int id)
