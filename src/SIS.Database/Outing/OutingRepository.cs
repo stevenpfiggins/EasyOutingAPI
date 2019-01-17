@@ -53,10 +53,12 @@ namespace RedStarter.Database.Outing
                 .OutingTableAccess
                 .SingleOrDefaultAsync(e => e.OutingEntityId == rao.OutingEntityId);
 
-            entity.OutingDate = rao.OutingDate;
-            entity.OutingDescription = rao.OutingDescription;
             entity.OutingName = rao.OutingName;
+            entity.OutingDescription = rao.OutingDescription;
+            entity.OutingDate = rao.OutingDate;
+            entity.OutingLocation = rao.OutingLocation;
             entity.OutingType = rao.OutingType;
+            entity.CreatedOn = rao.CreatedOn;
 
             return await _context.SaveChangesAsync() == 1;
         }

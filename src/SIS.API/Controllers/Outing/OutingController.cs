@@ -26,7 +26,7 @@ namespace RedStarter.API.Controllers.Outing
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin, User")]
+        //[Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> PostOuting(OutingCreateRequest request)
         {
             if (!ModelState.IsValid)
@@ -35,6 +35,7 @@ namespace RedStarter.API.Controllers.Outing
             }
 
             var dto = _mapper.Map<OutingCreateDTO>(request);
+            dto.CreatedBy = User.Identity.Name;
             dto.CreatedOn = DateTime.Now;
             dto.OwnerId = GetUser();
 
@@ -74,8 +75,8 @@ namespace RedStarter.API.Controllers.Outing
             return Ok(response);
         }
 
-        [HttpPut("{id}")]
-        [Authorize(Roles = "Admin, User")]
+        [HttpPut]
+        //[Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> OutingUpdate(OutingUpdateRequest request)
         {
             if (!ModelState.IsValid)
@@ -84,6 +85,8 @@ namespace RedStarter.API.Controllers.Outing
             }
 
             var dto = _mapper.Map<OutingUpdateDTO>(request);
+            dto.OwnerId = GetUser();
+            dto.CreatedOn = DateTimeOffset.Now;
 
             if (await _manager.OutingUpdate(dto))
             {
@@ -94,7 +97,7 @@ namespace RedStarter.API.Controllers.Outing
         }
 
         [HttpDelete("{id}")]
-        [Authorize(Roles ="Admin, User")]
+        //[Authorize(Roles ="Admin, User")]
         public async Task<IActionResult> DeleteOuting(int id)
         {
             if (!ModelState.IsValid)

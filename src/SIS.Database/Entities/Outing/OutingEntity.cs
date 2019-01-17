@@ -23,7 +23,7 @@ namespace RedStarter.Database.Entities.Outing
         public DateTimeOffset OutingDate { get; set; }
 
         [Required]
-        public int OutingType { get; set; }
+        public string OutingType { get; set; }
 
         [Required]
         public string CreatedBy { get; set; }
