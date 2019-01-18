@@ -59,6 +59,23 @@ namespace RedStarter.API.Controllers.Outing
 
             return Ok(response);
         }
+
+        [HttpGet]
+        [Authorize(Roles ="Admin, User")]
+        [Route("OutingsByUser")]
+        public async Task<IActionResult> GetOutingsByUser()
+        {
+            if (!ModelState.IsValid)
+            {
+                return StatusCode(400);
+            }
+
+            var userId = GetUser();
+            var dto = await _manager.GetOutingsByUser(userId);
+            var response = _mapper.Map<IEnumerable<OutingGetListItemResponse>>(dto);
+
+            return Ok(response);
+        }
         
         [AllowAnonymous]
         [HttpGet("{id}")]

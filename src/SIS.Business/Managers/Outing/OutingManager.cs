@@ -39,6 +39,14 @@ namespace RedStarter.Business.Managers.Outing
             return dto;
         }
 
+        public async Task<IEnumerable<OutingGetListItemDTO>> GetOutingsByUser(int id)
+        {
+            var rao = await _repository.GetOutingsByUser(id);
+            var dto = _mapper.Map<IEnumerable<OutingGetListItemDTO>>(rao);
+
+            return dto;
+        }
+
         public async Task<OutingGetByIdDTO> GetOutingById(int id)
         {
             var rao = await _repository.GetOutingById(id);

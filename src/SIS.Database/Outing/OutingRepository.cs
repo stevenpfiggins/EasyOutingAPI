@@ -6,6 +6,7 @@ using RedStarter.Database.DataContract.Outing.RAOs;
 using RedStarter.Database.Entities.Outing;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -34,6 +35,14 @@ namespace RedStarter.Database.Outing
         public async Task<IEnumerable<OutingGetListItemRAO>> GetOutings()
         {
             var entity = await _context.OutingTableAccess.ToArrayAsync();
+            var rao = _mapper.Map<IEnumerable<OutingGetListItemRAO>>(entity);
+
+            return rao;
+        }
+
+        public async Task<IEnumerable<OutingGetListItemRAO>> GetOutingsByUser(int id)
+        {
+            var entity = await _context.OutingTableAccess.Where(e => e.OwnerId == id).ToArrayAsync();
             var rao = _mapper.Map<IEnumerable<OutingGetListItemRAO>>(entity);
 
             return rao;
