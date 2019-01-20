@@ -295,7 +295,8 @@ namespace RedStarter.Database.Migrations
                     b.Property<string>("OutingName")
                         .IsRequired();
 
-                    b.Property<int>("OutingType");
+                    b.Property<string>("OutingType")
+                        .IsRequired();
 
                     b.Property<int>("OwnerId");
 

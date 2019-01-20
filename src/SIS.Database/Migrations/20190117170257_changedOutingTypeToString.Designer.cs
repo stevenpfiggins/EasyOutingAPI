@@ -10,8 +10,8 @@ using RedStarter.Database.Contexts;
 namespace RedStarter.Database.Migrations
 {
     [DbContext(typeof(SISContext))]
-    [Migration("20190114191354_first")]
-    partial class first
+    [Migration("20190117170257_changedOutingTypeToString")]
+    partial class changedOutingTypeToString
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -183,15 +183,94 @@ namespace RedStarter.Database.Migrations
 
             modelBuilder.Entity("RedStarter.Database.Entities.Interests.InterestsEntity", b =>
                 {
-                    b.Property<int>("TransactionId")
+                    b.Property<int>("InterestsEntityId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Interests");
+                    b.Property<bool>("Aquariums");
+
+                    b.Property<bool>("Arcades");
+
+                    b.Property<bool>("Bars");
+
+                    b.Property<bool>("Baseball");
+
+                    b.Property<bool>("Basketball");
+
+                    b.Property<bool>("BoardGames");
+
+                    b.Property<bool>("Bowling");
+
+                    b.Property<bool>("Camping");
+
+                    b.Property<bool>("Canoeing");
+
+                    b.Property<bool>("CardGames");
+
+                    b.Property<bool>("Clubs");
+
+                    b.Property<bool>("Concerts");
+
+                    b.Property<bool>("Consoles");
+
+                    b.Property<bool>("Festivals");
+
+                    b.Property<bool>("Fishing");
+
+                    b.Property<bool>("Football");
+
+                    b.Property<bool>("Galleries");
+
+                    b.Property<bool>("Golf");
+
+                    b.Property<bool>("Gymnastics");
+
+                    b.Property<bool>("Hiking");
+
+                    b.Property<bool>("Hockey");
+
+                    b.Property<bool>("Kayaking");
+
+                    b.Property<bool>("Knitting");
+
+                    b.Property<bool>("Movies");
+
+                    b.Property<bool>("Museums");
 
                     b.Property<int>("OwnerId");
 
-                    b.HasKey("TransactionId");
+                    b.Property<bool>("Painting");
+
+                    b.Property<bool>("Pottery");
+
+                    b.Property<bool>("Restaurants");
+
+                    b.Property<bool>("RockClimbing");
+
+                    b.Property<bool>("Running");
+
+                    b.Property<bool>("SightSeeing");
+
+                    b.Property<bool>("Soccer");
+
+                    b.Property<bool>("Tennis");
+
+                    b.Property<bool>("Theatre");
+
+                    b.Property<string>("UserLocation");
+
+                    b.Property<string>("UserName")
+                        .IsRequired();
+
+                    b.Property<bool>("WeightLifting");
+
+                    b.Property<bool>("Wineries");
+
+                    b.Property<bool>("Yoga");
+
+                    b.Property<bool>("Zoo");
+
+                    b.HasKey("InterestsEntityId");
 
                     b.ToTable("InterestsTableAccess");
                 });
@@ -212,10 +291,14 @@ namespace RedStarter.Database.Migrations
                     b.Property<string>("OutingDescription")
                         .IsRequired();
 
+                    b.Property<string>("OutingLocation")
+                        .IsRequired();
+
                     b.Property<string>("OutingName")
                         .IsRequired();
 
-                    b.Property<int>("OutingType");
+                    b.Property<string>("OutingType")
+                        .IsRequired();
 
                     b.Property<int>("OwnerId");
 

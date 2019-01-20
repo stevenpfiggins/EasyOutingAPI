@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RedStarter.Database.Migrations
 {
-    public partial class removedEnumsAndTweakedTables : Migration
+    public partial class changedDBName : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

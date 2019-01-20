@@ -6,6 +6,7 @@ using RedStarter.Database.DataContract.Outing.RAOs;
 using RedStarter.Database.Entities.Outing;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -39,6 +40,14 @@ namespace RedStarter.Database.Outing
             return rao;
         }
 
+        public async Task<IEnumerable<OutingGetListItemRAO>> GetOutingsByUser(int id)
+        {
+            var entity = await _context.OutingTableAccess.Where(e => e.OwnerId == id).ToArrayAsync();
+            var rao = _mapper.Map<IEnumerable<OutingGetListItemRAO>>(entity);
+
+            return rao;
+        }
+
         public async Task<OutingGetByIdRAO> GetOutingById(int id)
         {
             var entity = await _context.OutingTableAccess.SingleAsync(e => e.OutingEntityId == id);
@@ -53,10 +62,12 @@ namespace RedStarter.Database.Outing
                 .OutingTableAccess
                 .SingleOrDefaultAsync(e => e.OutingEntityId == rao.OutingEntityId);
 
-            entity.OutingDate = rao.OutingDate;
-            entity.OutingDescription = rao.OutingDescription;
             entity.OutingName = rao.OutingName;
+            entity.OutingDescription = rao.OutingDescription;
+            entity.OutingDate = rao.OutingDate;
+            entity.OutingLocation = rao.OutingLocation;
             entity.OutingType = rao.OutingType;
+            entity.CreatedOn = rao.CreatedOn;
 
             return await _context.SaveChangesAsync() == 1;
         }

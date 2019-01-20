@@ -26,7 +26,7 @@ namespace RedStarter.API.Controllers.InterestsController
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin, User")]
+        //[Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> PostInterests(InterestsCreateRequest request)
         {
             if (!ModelState.IsValid)
@@ -37,6 +37,7 @@ namespace RedStarter.API.Controllers.InterestsController
 
             var identityClaimNum = GetUser();
 
+            dto.UserName = User.Identity.Name;
             dto.OwnerId = identityClaimNum;
 
             if (await _manager.CreateInterests(dto))
@@ -46,7 +47,7 @@ namespace RedStarter.API.Controllers.InterestsController
         }
 
         [HttpGet]
-        [Authorize(Roles ="Admin, User")]
+        //[Authorize(Roles ="Admin, User")]
         public async Task<IActionResult> GetInterests()
         {
             if (!ModelState.IsValid)
@@ -62,7 +63,7 @@ namespace RedStarter.API.Controllers.InterestsController
         }
 
         [HttpGet("{id}")]
-        [Authorize(Roles = "Admin, User")]
+        //[Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> GetInterestsById(int id)
         {
             if (!ModelState.IsValid)
@@ -77,8 +78,8 @@ namespace RedStarter.API.Controllers.InterestsController
             return Ok(response);
         }
 
-        [HttpPut("{id}")]
-        [Authorize(Roles = "Admin, User")]
+        [HttpPut]
+        //[Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> InterestsUpdate(InterestsUpdateItem request)
         {
 
@@ -99,7 +100,7 @@ namespace RedStarter.API.Controllers.InterestsController
         }
 
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin, User")]
+        //[Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> DeleteInterests(int id)
         {
             if (await _manager.DeleteInterests(id))
