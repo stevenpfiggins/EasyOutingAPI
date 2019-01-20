@@ -61,8 +61,23 @@ namespace RedStarter.API.Controllers.Outing
         }
 
         [HttpGet]
+        [Route("Feed")]
+        public async Task<IActionResult> GetOutingsByUserLocation()
+        {
+            if (!ModelState.IsValid)
+            {
+                return StatusCode(400);
+            }
+
+            var userId = GetUser();
+            var dto = await _manager.GetOutingsByInterestsLocation(userId);
+            var response = _mapper.Map<IEnumerable<OutingGetListItemResponse>>(dto);
+            return Ok(response);
+        }
+
+        [HttpGet]
         [Authorize(Roles ="Admin, User")]
-        [Route("OutingsByUser")]
+        [Route("MyOutings")]
         public async Task<IActionResult> GetOutingsByUser()
         {
             if (!ModelState.IsValid)

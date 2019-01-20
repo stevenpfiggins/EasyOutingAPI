@@ -41,7 +41,7 @@ namespace RedStarter.Business.Managers.Interests
 
         public async Task<InterestsGetByIdDTO> GetInterestsById(int id)
         {
-            var rao = await _repository.GetInterestsById(id);
+            var rao = await _repository.GetInterestsByOwnerId(id);
             var dto = _mapper.Map<InterestsGetByIdDTO>(rao);
 
             return dto;

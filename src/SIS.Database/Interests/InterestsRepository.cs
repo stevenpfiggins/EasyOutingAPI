@@ -43,9 +43,9 @@ namespace RedStarter.Database.Interests
             return rao;
         }
 
-        public async Task<InterestsGetByIdRAO> GetInterestsById(int id)
+        public async Task<InterestsGetByIdRAO> GetInterestsByOwnerId(int id)
         {
-            var entity = await _context.InterestsTableAccess.SingleOrDefaultAsync(e => e.InterestsEntityId == id);
+            var entity = await _context.InterestsTableAccess.SingleOrDefaultAsync(e => e.OwnerId == id);
             var rao = _mapper.Map<InterestsGetByIdRAO>(entity);
 
             return rao;
@@ -56,8 +56,7 @@ namespace RedStarter.Database.Interests
             var entity = await _context
             .InterestsTableAccess
             .SingleOrDefaultAsync(e => e.InterestsEntityId == rao.InterestsEntityId);
-
-            entity.UserName = rao.UserName;
+            
             entity.UserLocation = rao.UserLocation;
             entity.Aquariums = rao.Aquariums;
             entity.Arcades = rao.Arcades;
