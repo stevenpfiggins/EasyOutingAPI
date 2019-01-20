@@ -15,5 +15,6 @@ namespace RedStarter.Business.DataContract.Outing.Interfaces
         Task<OutingGetByIdDTO> GetOutingById(int id);
         Task<bool> DeleteOuting(int id);
         Task<bool> OutingUpdate(OutingUpdateDTO dto);
+        Task <IEnumerable<OutingGetListItemDTO>> GetOutingsByInterestsLocation(int id);
     }
 }
