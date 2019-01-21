@@ -38,8 +38,16 @@ namespace RedStarter.Business.Managers.Interests
             return dto;
         }
 
+        public async Task<IEnumerable<InterestsGetListItemDTO>> GetInterestsByUser(int id)
+        {
+            var rao = await _repository.GetInterestsByUser(id);
+            var dto = _mapper.Map<IEnumerable<InterestsGetListItemDTO>>(rao);
 
-        public async Task<InterestsGetByIdDTO> GetInterestsById(int id)
+            return dto;
+        }
+
+
+        public async Task<InterestsGetByIdDTO> GetInterestsByOwnerId(int id)
         {
             var rao = await _repository.GetInterestsByOwnerId(id);
             var dto = _mapper.Map<InterestsGetByIdDTO>(rao);

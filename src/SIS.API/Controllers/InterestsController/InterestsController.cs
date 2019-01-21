@@ -26,15 +26,15 @@ namespace RedStarter.API.Controllers.InterestsController
         }
 
         [HttpPost]
-        //[Authorize(Roles = "Admin, User")]
+        [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> PostInterests(InterestsCreateRequest request)
         {
             if (!ModelState.IsValid)
             {
                 return StatusCode(400);
             }
-            var dto = _mapper.Map<InterestsCreateDTO>(request);
 
+            var dto = _mapper.Map<InterestsCreateDTO>(request);
             var identityClaimNum = GetUser();
 
             dto.UserName = User.Identity.Name;
@@ -47,7 +47,7 @@ namespace RedStarter.API.Controllers.InterestsController
         }
 
         [HttpGet]
-        //[Authorize(Roles ="Admin, User")]
+        [Authorize(Roles ="Admin")]
         public async Task<IActionResult> GetInterests()
         {
             if (!ModelState.IsValid)
@@ -56,14 +56,30 @@ namespace RedStarter.API.Controllers.InterestsController
             }
 
             var dto = await _manager.GetInterests();
+            var response = _mapper.Map<IEnumerable<InterestsResponse>>(dto);
 
+            return Ok(response);
+        }
+
+        [HttpGet]
+        [Authorize(Roles ="Admin, User")]
+        [Route("MyInterests")]
+        public async Task<IActionResult> GetInterestsByUser()
+        {
+            if (!ModelState.IsValid)
+            {
+                return StatusCode(400);
+            }
+
+            var userId = GetUser();
+            var dto = await _manager.GetInterestsByUser(userId);
             var response = _mapper.Map<IEnumerable<InterestsResponse>>(dto);
 
             return Ok(response);
         }
 
         [HttpGet("{id}")]
-        //[Authorize(Roles = "Admin, User")]
+        [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> GetInterestsById(int id)
         {
             if (!ModelState.IsValid)
@@ -72,14 +88,14 @@ namespace RedStarter.API.Controllers.InterestsController
                 return StatusCode(400);
             }
 
-            var dto = await _manager.GetInterestsById(id);
+            var dto = await _manager.GetInterestsByOwnerId(id);
             var response = _mapper.Map<InterestsGetByIdRequest>(dto);
 
             return Ok(response);
         }
 
         [HttpPut]
-        //[Authorize(Roles = "Admin, User")]
+        [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> InterestsUpdate(InterestsUpdateItem request)
         {
 
@@ -100,7 +116,7 @@ namespace RedStarter.API.Controllers.InterestsController
         }
 
         [HttpDelete("{id}")]
-        //[Authorize(Roles = "Admin, User")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteInterests(int id)
         {
             if (await _manager.DeleteInterests(id))
