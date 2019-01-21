@@ -50,48 +50,9 @@ namespace RedStarter.Business.Managers.Outing
 
             foreach (var item in rao)
             {
-                string canoeing;
-                string kayaking;
-                string hiking;
-                string rockClimbing;
-                string camping;
-                string fishing;
-                string sightSeeing;
-                string football;
-                string basketball;
-                string soccer;
-                string baseball;
-                string hockey;
-                string tennis;
-                string golf;
-                string running;
-                string weightLifting;
-                string yoga;
-                string gymnastics;
-                string restaurants;
-                string bars;
-                string wineries;
-                string consoles;
-                string boardGames;
-                string cardGames;
-                string arcades;
-                string movies;
-                string theatre;
-                string concerts;
-                string festivals;
-                string clubs;
-                string bowling;
-                string zoo;
-                string painting;
-                string knitting;
-                string pottery;
-                string museums;
-                string aquariums;
-                string galleries;
-
                 if (interestsRao.Canoeing)
                 {
-                    canoeing = "Canoeing";
+                    string canoeing = "Canoeing";
                     if (item.OutingType == canoeing && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -100,7 +61,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.Kayaking)
                 {
-                    kayaking = "Kayaking";
+                    string kayaking = "Kayaking";
                     if (item.OutingType == kayaking && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -109,7 +70,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.Hiking)
                 {
-                    hiking = "Hiking";
+                    string hiking = "Hiking";
                     if (item.OutingType == hiking && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -118,7 +79,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.RockClimbing)
                 {
-                    rockClimbing = "RockClimbing";
+                    string rockClimbing = "RockClimbing";
                     if (item.OutingType == rockClimbing && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -127,7 +88,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.Camping)
                 {
-                    camping = "Camping";
+                    string camping = "Camping";
                     if (item.OutingType == camping && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -136,7 +97,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.Fishing)
                 {
-                    fishing = "Fishing";
+                    string fishing = "Fishing";
                     if (item.OutingType == fishing && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -145,7 +106,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.SightSeeing)
                 {
-                    sightSeeing = "SightSeeing";
+                    string sightSeeing = "SightSeeing";
                     if (item.OutingType == sightSeeing && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -154,7 +115,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.Football)
                 {
-                    football = "Football";
+                    string football = "Football";
                     if (item.OutingType == football && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -163,7 +124,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.Basketball)
                 {
-                    basketball = "Basketball";
+                    string basketball = "Basketball";
                     if (item.OutingType == basketball && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -172,7 +133,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.Soccer)
                 {
-                    soccer = "Soccer";
+                    string soccer = "Soccer";
                     if (item.OutingType == soccer && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -181,7 +142,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.Baseball)
                 {
-                    baseball = "Baseball";
+                    string baseball = "Baseball";
                     if (item.OutingType == baseball && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -190,7 +151,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.Hockey)
                 {
-                    hockey = "Hockey";
+                    string hockey = "Hockey";
                     if (item.OutingType == hockey && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -199,7 +160,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.Tennis)
                 {
-                    tennis = "Tennis";
+                    string tennis = "Tennis";
                     if (item.OutingType == tennis && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -208,7 +169,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.Golf)
                 {
-                    golf = "Golf";
+                    string golf = "Golf";
                     if (item.OutingType == golf && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -217,7 +178,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.Running)
                 {
-                    running = "Running";
+                    string running = "Running";
                     if (item.OutingType == running && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -226,7 +187,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.WeightLifting)
                 {
-                    weightLifting = "WeightLifting";
+                    string weightLifting = "WeightLifting";
                     if (item.OutingType == weightLifting && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -235,7 +196,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.Yoga)
                 {
-                    yoga = "Yoga";
+                    string yoga = "Yoga";
                     if (item.OutingType == yoga && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -244,7 +205,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.Gymnastics)
                 {
-                    gymnastics = "Gymnastics";
+                    string gymnastics = "Gymnastics";
                     if (item.OutingType == gymnastics && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -253,7 +214,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.Restaurants)
                 {
-                    restaurants = "Restaurants";
+                    string restaurants = "Restaurants";
                     if (item.OutingType == restaurants && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -262,7 +223,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.Bars)
                 {
-                    bars = "Bars";
+                    string bars = "Bars";
                     if (item.OutingType == bars && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -271,7 +232,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.Wineries)
                 {
-                    wineries = "Wineries";
+                    string wineries = "Wineries";
                     if (item.OutingType == wineries && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -280,7 +241,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.Consoles)
                 {
-                    consoles = "Consoles";
+                    string consoles = "Consoles";
                     if (item.OutingType == consoles && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -289,7 +250,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.BoardGames)
                 {
-                    boardGames = "BoardGames";
+                    string boardGames = "BoardGames";
                     if (item.OutingType == boardGames && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -298,7 +259,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.CardGames)
                 {
-                    cardGames = "CardGames";
+                    string cardGames = "CardGames";
                     if (item.OutingType == cardGames && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -307,7 +268,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.Arcades)
                 {
-                    arcades = "Arcades";
+                    string arcades = "Arcades";
                     if (item.OutingType == arcades && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -316,7 +277,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.Movies)
                 {
-                    movies = "Movies";
+                    string movies = "Movies";
                     if (item.OutingType == movies && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -325,7 +286,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.Theatre)
                 {
-                    theatre = "Theatre";
+                    string theatre = "Theatre";
                     if (item.OutingType == theatre && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -334,7 +295,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.Concerts)
                 {
-                    concerts = "Concerts";
+                    string concerts = "Concerts";
                     if (item.OutingType == concerts && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -343,7 +304,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.Festivals)
                 {
-                    festivals = "Festivals";
+                    string festivals = "Festivals";
                     if (item.OutingType == festivals && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -352,7 +313,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.Clubs)
                 {
-                    clubs = "Clubs";
+                    string clubs = "Clubs";
                     if (item.OutingType == clubs && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -361,7 +322,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.Bowling)
                 {
-                    bowling = "Bowling";
+                    string bowling = "Bowling";
                     if (item.OutingType == bowling && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -370,7 +331,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.Zoo)
                 {
-                    zoo = "Zoo";
+                    string zoo = "Zoo";
                     if (item.OutingType == zoo && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -379,7 +340,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.Painting)
                 {
-                    painting = "Painting";
+                    string painting = "Painting";
                     if (item.OutingType == painting && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -388,7 +349,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.Knitting)
                 {
-                    knitting = "Knitting";
+                    string knitting = "Knitting";
                     if (item.OutingType == knitting && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -397,7 +358,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.Pottery)
                 {
-                    pottery = "Pottery";
+                    string pottery = "Pottery";
                     if (item.OutingType == pottery && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -406,7 +367,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.Museums)
                 {
-                    museums = "Museums";
+                    string museums = "Museums";
                     if (item.OutingType == museums && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -415,7 +376,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.Aquariums)
                 {
-                    aquariums = "Aquariums";
+                    string aquariums = "Aquariums";
                     if (item.OutingType == aquariums && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
@@ -424,7 +385,7 @@ namespace RedStarter.Business.Managers.Outing
 
                 if (interestsRao.Galleries)
                 {
-                    galleries = "Galleries";
+                    string galleries = "Galleries";
                     if (item.OutingType == galleries && item.OutingLocation == interestsRao.UserLocation && item.OutingDate >= DateTimeOffset.Now)
                     {
                         collectionOfMatchedLocationAndInterests.Add(item);
