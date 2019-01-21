@@ -43,6 +43,14 @@ namespace RedStarter.Database.Interests
             return rao;
         }
 
+        public async Task<IEnumerable<InterestsGetListItemRAO>> GetInterestsByUser(int id)
+        {
+            var entity = await _context.InterestsTableAccess.Where(e => e.OwnerId == id).ToArrayAsync();
+            var rao = _mapper.Map<IEnumerable<InterestsGetListItemRAO>>(entity);
+
+            return rao;
+        }
+
         public async Task<InterestsGetByIdRAO> GetInterestsByOwnerId(int id)
         {
             var entity = await _context.InterestsTableAccess.SingleOrDefaultAsync(e => e.OwnerId == id);

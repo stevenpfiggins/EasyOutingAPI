@@ -26,7 +26,7 @@ namespace RedStarter.API.Controllers.Outing
         }
 
         [HttpPost]
-        //[Authorize(Roles = "Admin, User")]
+        [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> PostOuting(OutingCreateRequest request)
         {
             if (!ModelState.IsValid)
@@ -62,7 +62,7 @@ namespace RedStarter.API.Controllers.Outing
 
         [HttpGet]
         [Route("Feed")]
-        public async Task<IActionResult> GetOutingsByUserLocation()
+        public async Task<IActionResult> GetOutingsByMatchedInterestsProfile()
         {
             if (!ModelState.IsValid)
             {
@@ -70,7 +70,7 @@ namespace RedStarter.API.Controllers.Outing
             }
 
             var userId = GetUser();
-            var dto = await _manager.GetOutingsByInterestsLocation(userId);
+            var dto = await _manager.GetOutingsByMatchedInterestsProfile(userId);
             var response = _mapper.Map<IEnumerable<OutingGetListItemResponse>>(dto);
             return Ok(response);
         }
@@ -108,7 +108,7 @@ namespace RedStarter.API.Controllers.Outing
         }
 
         [HttpPut]
-        //[Authorize(Roles = "Admin, User")]
+        [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> OutingUpdate(OutingUpdateRequest request)
         {
             if (!ModelState.IsValid)
@@ -129,7 +129,7 @@ namespace RedStarter.API.Controllers.Outing
         }
 
         [HttpDelete("{id}")]
-        //[Authorize(Roles ="Admin, User")]
+        [Authorize(Roles ="Admin, User")]
         public async Task<IActionResult> DeleteOuting(int id)
         {
             if (!ModelState.IsValid)

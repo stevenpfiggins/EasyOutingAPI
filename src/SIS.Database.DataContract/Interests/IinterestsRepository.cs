@@ -11,6 +11,7 @@ namespace RedStarter.Database.DataContract.Interests
     {
         Task<bool> CreateInterests(InterestsCreateRAO rao);
         Task<IEnumerable<InterestsGetListItemRAO>> GetInterests();
+        Task<IEnumerable<InterestsGetListItemRAO>> GetInterestsByUser(int id);
         Task<InterestsGetByIdRAO> GetInterestsByOwnerId(int id);
         Task<bool> UpdateInterests(InterestsUpdateRAO rao);
         Task<bool> DeleteInterests(int id);
