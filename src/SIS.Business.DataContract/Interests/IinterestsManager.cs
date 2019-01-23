@@ -12,6 +12,7 @@ namespace RedStarter.Business.DataContract.Interests
         Task<IEnumerable<InterestsGetListItemDTO>> GetInterests();
         Task<IEnumerable<InterestsGetListItemDTO>> GetInterestsByUser(int id);
         Task<InterestsGetByIdDTO> GetInterestsByOwnerId(int id);
+        Task<InterestsGetByIdDTO> GetInterestsByEntityId(int id);
         Task<bool> DeleteInterests(int id);
         Task<bool> UpdateInterests(InterestsUpdateDTO dto);
 

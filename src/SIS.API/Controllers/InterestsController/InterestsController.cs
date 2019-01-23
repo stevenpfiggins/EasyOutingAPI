@@ -80,7 +80,7 @@ namespace RedStarter.API.Controllers.InterestsController
 
         [HttpGet("{id}")]
         [Authorize(Roles = "Admin, User")]
-        public async Task<IActionResult> GetInterestsById(int id)
+        public async Task<IActionResult> GetInterestsByOwnerId(int id)
         {
             if (!ModelState.IsValid)
 
@@ -89,6 +89,22 @@ namespace RedStarter.API.Controllers.InterestsController
             }
 
             var dto = await _manager.GetInterestsByOwnerId(id);
+            var response = _mapper.Map<InterestsGetByIdRequest>(dto);
+
+            return Ok(response);
+        }
+
+        [HttpGet]
+        [Route("InterestsProfile/{id}")]
+        public async Task<IActionResult> GetInterestsByEntityId(int id)
+        {
+            if (!ModelState.IsValid)
+
+            {
+                return StatusCode(400);
+            }
+
+            var dto = await _manager.GetInterestsByEntityId(id);
             var response = _mapper.Map<InterestsGetByIdRequest>(dto);
 
             return Ok(response);

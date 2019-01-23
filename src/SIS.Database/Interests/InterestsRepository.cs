@@ -30,9 +30,14 @@ namespace RedStarter.Database.Interests
         {
             var entity = _mapper.Map<InterestsEntity>(rao);
 
-            await _context.InterestsTableAccess.AddAsync(entity);
+            if (!_context.InterestsTableAccess.Any(e => e.OwnerId == rao.OwnerId))
+            {
+                await _context.InterestsTableAccess.AddAsync(entity);
 
-            return await _context.SaveChangesAsync() == 1;
+                return await _context.SaveChangesAsync() == 1;
+            }
+
+            throw new Exception("A profile for this user already exists");
         }
 
         public async Task<IEnumerable<InterestsGetListItemRAO>> GetInterests()
@@ -59,12 +64,20 @@ namespace RedStarter.Database.Interests
             return rao;
         }
 
+        public async Task<InterestsGetByIdRAO> GetInterestsByEntityId(int id)
+        {
+            var entity = await _context.InterestsTableAccess.SingleOrDefaultAsync(e => e.InterestsEntityId == id);
+            var rao = _mapper.Map<InterestsGetByIdRAO>(entity);
+
+            return rao;
+        }
+
         public async Task<bool> UpdateInterests(InterestsUpdateRAO rao)
         {
             var entity = await _context
             .InterestsTableAccess
             .SingleOrDefaultAsync(e => e.InterestsEntityId == rao.InterestsEntityId);
-            
+
             entity.UserLocation = rao.UserLocation;
             entity.Aquariums = rao.Aquariums;
             entity.Arcades = rao.Arcades;

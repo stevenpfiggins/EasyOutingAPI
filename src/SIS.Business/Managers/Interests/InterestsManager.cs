@@ -55,6 +55,14 @@ namespace RedStarter.Business.Managers.Interests
             return dto;
         }
 
+        public async Task<InterestsGetByIdDTO> GetInterestsByEntityId(int id)
+        {
+            var rao = await _repository.GetInterestsByEntityId(id);
+            var dto = _mapper.Map<InterestsGetByIdDTO>(rao);
+
+            return dto;
+        }
+
         public async Task<bool> DeleteInterests(int id)
         {
            if  (await _repository.DeleteInterests(id))
