@@ -1,4 +1,5 @@
 # DotNetCore-WebApi-Starter
+Service application that allows a user to create and view outings in their area according to their interests. https://easyoutings-herokuapp.com
 
 ## Architecture
 This project uses N-Tier architecture to encapsulate structural concerns of the application into assemblies per concern.
@@ -38,7 +39,7 @@ Depends only on a connection to the SIS database and Entity Framework.
     1) This layer should be kept highly encapsulated and has no knowledge of Business data contracts or logic. RAOs are passed in through Repository method calls(or other pattern as needed), but no contracts are known.
     2) This layer should map RAOs to entities. 
     3) This layer will contain entities that are mapped to the DB and are suffixed by with the word "Entity". For instance, UserEntity.
-    4) This layer will contain Repositories for CRUD + List operations. For instance, NoteRepository would have a method called Create that would convert RAOs to Entities. Then, Add them to the DbContext and call SaveChanges().
+    4) This layer will contain Repositories for CRUD + List operations. For instance, OutingRepository would have a method called Create that would convert RAOs to Entities. Then, Add them to the DbContext and call SaveChanges().
 
 3) Project.Database.Tests
 
